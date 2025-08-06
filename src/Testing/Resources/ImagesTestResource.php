@@ -18,17 +18,17 @@ final class ImagesTestResource implements ImagesContract
         return Images::class;
     }
 
-    public function create(array $parameters, ?string $resource = null): CreateResponse
+    public function create(array $parameters): CreateResponse
     {
         return $this->record(__FUNCTION__, func_get_args());
     }
 
-    public function edit(array $parameters, ?string $resource = null): EditResponse
+    public function edit(array $parameters): EditResponse
     {
         return $this->record(__FUNCTION__, func_get_args());
     }
 
-    public function variation(array $parameters, ?string $resource = null): VariationResponse
+    public function variation(array $parameters): VariationResponse
     {
         return $this->record(__FUNCTION__, func_get_args());
     }

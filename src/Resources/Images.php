@@ -22,9 +22,9 @@ final class Images implements ImagesContract
      *
      * @param  array<string, mixed>  $parameters
      */
-    public function create(array $parameters, ?string $resource = null): CreateResponse
+    public function create(array $parameters): CreateResponse
     {
-        $payload = Payload::create($resource ?? 'images/generations', $parameters);
+        $payload = Payload::create('images/generations', $parameters);
 
         /** @var Response<array{created: int, data: array<int, array{url?: string, b64_json?: string, revised_prompt?: string}>, usage?: array{total_tokens: int, input_tokens: int, output_tokens: int, input_tokens_details: array{text_tokens: int, image_tokens: int}}}> $response */
         $response = $this->transporter->requestObject($payload);
@@ -39,9 +39,9 @@ final class Images implements ImagesContract
      *
      * @param  array<string, mixed>  $parameters
      */
-    public function edit(array $parameters, ?string $resource = null): EditResponse
+    public function edit(array $parameters): EditResponse
     {
-        $payload = Payload::upload($resource ?? 'images/edits', $parameters);
+        $payload = Payload::upload('images/edits', $parameters);
 
         /** @var Response<array{created: int, data: array<int, array{url?: string, b64_json?: string}>, usage?: array{total_tokens: int, input_tokens: int, output_tokens: int, input_tokens_details: array{text_tokens: int, image_tokens: int}}}> $response */
         $response = $this->transporter->requestObject($payload);
@@ -56,9 +56,9 @@ final class Images implements ImagesContract
      *
      * @param  array<string, mixed>  $parameters
      */
-    public function variation(array $parameters, ?string $resource = null): VariationResponse
+    public function variation(array $parameters): VariationResponse
     {
-        $payload = Payload::upload($resource ?? 'images/variations', $parameters);
+        $payload = Payload::upload('images/variations', $parameters);
 
         /** @var Response<array{created: int, data: array<int, array{url?: string, b64_json?: string}>, usage?: array{total_tokens: int, input_tokens: int, output_tokens: int, input_tokens_details: array{text_tokens: int, image_tokens: int}}}> $response */
         $response = $this->transporter->requestObject($payload);
