@@ -32,6 +32,7 @@ final class CreateResponse implements ResponseContract, ResponseHasMetaInformati
         public readonly array $data,
         private readonly MetaInformation $meta,
         public readonly ?ImageResponseUsage $usage = null,
+        public readonly array $rawData = [],
     ) {}
 
     /**
@@ -50,6 +51,7 @@ final class CreateResponse implements ResponseContract, ResponseHasMetaInformati
             $results,
             $meta,
             isset($attributes['usage']) ? ImageResponseUsage::from($attributes['usage']) : null,
+            $attributes,
         );
     }
 
