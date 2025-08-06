@@ -15,7 +15,7 @@ interface ImagesContract
      *
      * @param  array<string, mixed>  $parameters
      */
-    public function create(array $parameters): CreateResponse;
+    public function create(array $parameters, ?string $resource = null): CreateResponse;
 
     /**
      * Creates an edited or extended image given an original image and a prompt.
@@ -24,7 +24,7 @@ interface ImagesContract
      *
      * @param  array<string, mixed>  $parameters
      */
-    public function edit(array $parameters): EditResponse;
+    public function edit(array $parameters, ?string $resource = null): EditResponse;
 
     /**
      * Creates a variation of a given image.
@@ -33,5 +33,5 @@ interface ImagesContract
      *
      * @param  array<string, mixed>  $parameters
      */
-    public function variation(array $parameters): VariationResponse;
+    public function variation(array $parameters, ?string $resource = null): VariationResponse;
 }
