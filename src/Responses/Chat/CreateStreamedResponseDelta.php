@@ -31,7 +31,7 @@ final class CreateStreamedResponseDelta
             $attributes['content'] ?? null,
             $toolCalls,
             isset($attributes['function_call']) ? CreateStreamedResponseFunctionCall::from($attributes['function_call']) : null,
-            $attributes['reasoning_content'] ?? null,
+            $attributes['reasoning'] ?? $attributes['reasoning_content'] ?? null,
         );
     }
 

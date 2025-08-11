@@ -43,7 +43,7 @@ final class CreateResponseMessage
             $toolCalls,
             isset($attributes['function_call']) ? CreateResponseFunctionCall::from($attributes['function_call']) : null,
             isset($attributes['audio']) ? CreateResponseChoiceAudio::from($attributes['audio']) : null,
-            $attributes['reasoning_content'] ?? null,
+            $attributes['reasoning'] ?? $attributes['reasoning_content'] ?? null,
         );
     }
 
