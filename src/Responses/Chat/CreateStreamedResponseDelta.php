@@ -14,6 +14,7 @@ final class CreateStreamedResponseDelta
         public readonly ?string $content,
         public readonly array $toolCalls,
         public readonly ?CreateStreamedResponseFunctionCall $functionCall,
+        public readonly ?string $reasoningContent,
     ) {}
 
     /**
@@ -30,6 +31,7 @@ final class CreateStreamedResponseDelta
             $attributes['content'] ?? null,
             $toolCalls,
             isset($attributes['function_call']) ? CreateStreamedResponseFunctionCall::from($attributes['function_call']) : null,
+            $attributes['reasoning_content'] ?? null,
         );
     }
 
@@ -41,6 +43,7 @@ final class CreateStreamedResponseDelta
         $data = array_filter([
             'role' => $this->role,
             'content' => $this->content,
+            'reasoning_content' => $this->reasoningContent,
         ], fn (?string $value): bool => ! is_null($value));
 
         if ($this->functionCall instanceof CreateStreamedResponseFunctionCall) {

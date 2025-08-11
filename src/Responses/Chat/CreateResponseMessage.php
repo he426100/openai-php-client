@@ -20,6 +20,7 @@ final class CreateResponseMessage
         public readonly array $toolCalls,
         public readonly ?CreateResponseFunctionCall $functionCall,
         public readonly ?CreateResponseChoiceAudio $audio = null,
+        public readonly ?string $reasoningContent,
     ) {}
 
     /**
@@ -42,6 +43,7 @@ final class CreateResponseMessage
             $toolCalls,
             isset($attributes['function_call']) ? CreateResponseFunctionCall::from($attributes['function_call']) : null,
             isset($attributes['audio']) ? CreateResponseChoiceAudio::from($attributes['audio']) : null,
+            $attributes['reasoning_content'] ?? null,
         );
     }
 
@@ -53,6 +55,7 @@ final class CreateResponseMessage
         $data = [
             'role' => $this->role,
             'content' => $this->content,
+            'reasoning_content' => $this->reasoningContent,
         ];
 
         if ($this->annotations !== []) {
